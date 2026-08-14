@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using WorldCities.Server.Data;
 using WorldCities.Server.Data.Models;
@@ -21,14 +22,17 @@ namespace WorldCities.Server.Controllers
             _context = context;
         }
 
-        // GET: api/Cities
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<City>>> GetCities()
-        {
-            return await _context.Cities.ToListAsync();
-        }
-
-        // GET: api/Cities/5
+       [HttpGet]
+public async Task<ActionResult<ApiResult<City>>> GetCities(
+    int pageIndex = 0,
+    int pageSize = 10)
+{
+    return await ApiResult<City>.CreateAsync(
+        _context.Cities.AsNoTracking(),
+        pageIndex,
+        pageSize
+    );
+}
         [HttpGet("{id}")]
         public async Task<ActionResult<City>> GetCity(int id)
         {
@@ -42,8 +46,6 @@ namespace WorldCities.Server.Controllers
             return city;
         }
 
-        // PUT: api/Cities/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCity(int id, City city)
         {
@@ -73,8 +75,6 @@ namespace WorldCities.Server.Controllers
             return NoContent();
         }
 
-        // POST: api/Cities
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<City>> PostCity(City city)
         {
