@@ -1,1 +1,2 @@
 C:\Users\Bitan\ASP.NET-Core-8-and-Angular\Chapter_05\WorldCities\worldcities.client\obj\Debug\worldcities.client.esproj.CoreCompileInputs.cache
+C:\Users\Bitan\WorldCitiesApp\WorldCities\worldcities.client\obj\Debug\worldcities.client.esproj.CoreCompileInputs.cache

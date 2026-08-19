@@ -11,6 +11,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CitiesComponent } from './cities/cities.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AngularMaterialModule } from './angular-material.module';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     CitiesComponent,
   ],
   imports: [
+    AngularMaterialModule,
     BrowserModule, HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
